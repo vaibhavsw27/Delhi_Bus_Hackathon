@@ -1,0 +1,70 @@
+BusPulse Delhi - Proposal
+Transport Stack Hackathon 2026
+=============================================================================
+
+1. THE PROBLEM
+-----------------------------------------------------------------------------
+Delhi's bus timetable (the published GTFS) estimates travel times as if every
+bus moves at one constant speed all day. Real buses do not: the same stretch
+of road can take twice as long at 6 pm as at 6 am, and some roads are slow at
+every hour.
+
+The result is that riders and planners are given travel times that are often
+far from reality. Measured on a held-out week of real trips, the timetable is
+wrong by 10.5 minutes on average, or about 23% of the trip length. Riders
+cannot plan reliably, and operators have no easy view of where and when their
+buses lose time.
+
+2. THE DATA WE USED
+-----------------------------------------------------------------------------
+- DTC bus GPS, October 2026 (provided by the hackathon, Transport Stack /
+  IIIT Delhi): a 16 GB archive of GTFS-Realtime vehicle positions, about
+  30 million points a day from roughly 6,000-6,300 buses.
+- Static GTFS "Delhi Buses: GTFS Static Data - DTC / DoT"
+  (delhi.transportstack.in): 6,849 stops, 2,504 routes, route shapes and the
+  timetable, which serves as the baseline we compare against.
+- Delhi Open Transit Data real-time feed (otd.delhi.gov.in), used only for
+  the live mode in the app.
+
+3. HOW WE SOLVED IT
+-----------------------------------------------------------------------------
+Instead of assuming a speed, BusPulse learns it from the GPS.
+
+a) Clean the GPS: remove duplicate rows (about 39% of the data), GPS spikes
+   and parked buses.
+b) Match each bus to its route line and record when it crossed each stop.
+   This gives observed travel times for 14,971 stop-to-stop segments, about
+   1.5 million observations a day.
+c) Build a travel-time table: for every segment, a typical time for each
+   half hour of the day, separately for weekdays, Saturdays and
+   Sundays/holidays. Where data is thin, the model falls back step by step
+   to coarser estimates, and finally to the timetable.
+d) Put it to use:
+   - a journey planner for riders (English and Hindi, installable on phones)
+     that gives realistic trip times and a "usually there by" time for late
+     days;
+   - a live mode that adjusts times using how buses are moving right now;
+   - a dashboard for operators (DTC, Transport Department) showing rush-hour
+     chokepoints, routes whose timetable is furthest from reality with a
+     corrected timetable to download, and the least predictable routes.
+
+4. RESULTS
+-----------------------------------------------------------------------------
+Trained on 1-24 October, tested on 25-31 October (330,803 trips the model
+never saw):
+
+                                  BusPulse     Timetable
+  Average error (MAE)             5.0 min      10.5 min
+  Error as % of trip (MAPE)       11.0 %       23.2 %
+
+- About half the timetable's error.
+- Better than the timetable on all 20 routes in the fixed comparison table.
+- The "usually there by" time held for 85% of test trips.
+
+5. WHY IT MATTERS AND WHAT NEXT
+-----------------------------------------------------------------------------
+Riders get travel times they can trust; operators get evidence of where
+schedules and roads need attention, from data the city already collects.
+Next steps: learn from the live feed every day so new months and festivals
+are covered, next-bus arrival times at every stop, crowding and fares from
+ticket data, bus + Metro journeys, and permanent free hosting.

@@ -1,0 +1,75 @@
+BusPulse Delhi - Technical Note: Method, Assumptions, Limitations
+=============================================================================
+
+METHOD
+-----------------------------------------------------------------------------
+1. Network. Segments are consecutive stop pairs from the static GTFS
+   (14,971 segments), shared by every route that drives them.
+
+2. Cleaning (per day, DuckDB). Drop duplicate GPS rows (~39%), speed spikes
+   and parked-bus points; normalise route ids (GPS stores "837.0", GTFS
+   "837").
+
+3. Map matching. Each point is projected onto its own route's shape (max
+   offset 150 m). Forward-moving stretches become runs (a gap over 300 s
+   splits a run), and stop-crossing times are linearly interpolated. Dwell
+   and signal time stay inside the segment time; terminal layovers are
+   excluded.
+
+4. Estimates. For each segment x day type (weekday / Saturday /
+   Sunday-holiday) x 30-minute bucket: trimmed mean of observed times
+   (10th-90th percentile).
+
+5. Fallback for sparse cells, in order (share of cells):
+   L1 the cell itself (31%); L2 neighbouring half hours (15%);
+   L3 segment average x citywide daily profile (42%); L4 route speed (7%);
+   L5 timetable (5%). The level used drives the confidence label in the app.
+
+6. Calibration. A single factor k = 1.013 aligns predicted and actual trip
+   times on training data.
+
+7. Reliability. "Usually there by" = expected time + training-day 90th
+   percentile lateness for that hour + waiting risk.
+
+8. Live adjustment. Every minute, recent observed/expected ratios per
+   segment are shrunk toward the citywide ratio and applied to near-term
+   trips, fading out over 30 minutes.
+
+9. Journey search. RAPTOR (numba), up to 3 buses, time-dependent hop times,
+   transfer walks under 300 m. Queries take ~20-50 ms.
+
+10. Validation. Train 1-24 Oct, test 25-31 Oct. Every test-day stretch of at
+    least 10 observed stops is scored (330,803 trips) for in-bus time only.
+    Baseline: GTFS timetable.
+      MAE  5.03 vs 10.48 min | MAPE 11.0% vs 23.2% | bias -1.11 vs -2.63 min
+    Live replay on 27 Oct: MAE 4.49 -> 4.18 min.
+    "Usually there by" coverage: 85%.
+
+ASSUMPTIONS
+-----------------------------------------------------------------------------
+- October 2026 is representative of typical travel conditions.
+- A bus's GPS route id is correct, so points can be matched to that route's
+  shape alone.
+- Travel time between stops can be interpolated linearly between GPS fixes.
+- A segment behaves the same regardless of which route is driving it.
+- Days fall into three types (weekday, Saturday, Sunday/holiday).
+- Waiting time = half the timetable headway, capped at 12 minutes.
+- Walking = straight-line distance x 1.3 at 1.2 m/s.
+
+LIMITATIONS
+-----------------------------------------------------------------------------
+- Only in-bus time is validated against GPS; walk and wait times are
+  modelled, not measured.
+- One month of data: later holidays, festivals and seasonal effects are not
+  learned (live mode partly compensates on the day).
+- The model underestimates busy afternoons in the test week (about 3 min
+  short at 17:00); overall bias is -1.1 min.
+- "Usually there by" holds for 85% of trips, not 90%, so the app says
+  "usually" rather than "9 in 10".
+- 5% of cells have no usable GPS and fall back to the constant-speed
+  timetable; the confidence label shows this.
+- Bus only; no Metro or multimodal journeys.
+- Runs on a single laptop; phones need the laptop on plus a temporary
+  HTTPS tunnel.
+- The raw data is not redistributed (size and ownership); results are
+  reproducible with the hackathon data and the steps in README.md.
