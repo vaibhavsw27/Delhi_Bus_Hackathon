@@ -1,0 +1,31 @@
+# Private: API keys and tokens. Never commit.
+secrets/
+.env
+*.key
+
+# Data: too large for GitHub and owned by the hackathon organisers.
+# Only the folder guide is kept.
+data/*
+!data/README.md
+
+# Third-party tools (download them yourself, see README)
+tools/
+
+# Logs (may contain tunnel links and machine details)
+logs/
+*.log
+
+# Python environment and caches
+.venv/
+__pycache__/
+*.pyc
+
+# Half-written outputs
+*.tmp
+*.tmp.*
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

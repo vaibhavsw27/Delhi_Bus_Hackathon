@@ -1,0 +1,101 @@
+<!doctype html>
+<!--
+  web/ops.html - BusPulse operator dashboard for DTC / Transport Department.
+  Inputs: /api/ops, /api/meta, /api/live/status, /api/network/segments, /api/network/speeds.
+  Outputs: network health page: KPIs, speed through the day, speed map with chokepoints,
+  timetable audit, reliability, bunching.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>BusPulse Operators</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/static/ops.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>BusPulse <span class="for">for operators</span></h1>
+      <p class="sub">Delhi bus network health from GPS, 1-24 Oct 2026 · validated on 25-31 Oct</p>
+    </div>
+    <div class="top-right">
+      <span id="liveChip" class="chip chip-grey">Live feed: checking</span>
+      <a class="back" href="/">Rider app</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="kpis" id="kpis"></section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>How fast are buses through the day?</h2>
+        <p>Average bus speed on stretches measured from GPS, per half hour.</p>
+      </div>
+      <div id="speedChart" class="chart"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Where do buses lose the most time?</h2>
+        <p>Weekday speeds by stretch. A chokepoint costs <b>bus-minutes per hour</b>: delay against
+          the quiet hour times buses scheduled through it. These are the best places for bus lanes
+          or signal changes.</p>
+      </div>
+      <div class="map-row">
+        <div class="map-col">
+          <div id="opsMap" class="ops-map"></div>
+          <div class="hour-row">
+            <span>Hour</span>
+            <input id="hourSlider" type="range" min="5" max="22" step="1" value="18">
+            <b id="hourValue">18:00</b>
+          </div>
+        </div>
+        <div class="list-col">
+          <table class="tbl" id="chokeTable"></table>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Which timetables are most wrong?</h2>
+        <p>Whole-route run time on weekdays: timetable against what buses actually took. Click a
+          route to see every hour and download a corrected timetable.</p>
+      </div>
+      <div class="audit-row">
+        <div class="audit-list"><table class="tbl" id="auditTable"></table></div>
+        <div class="audit-detail" id="auditDetail"></div>
+      </div>
+    </section>
+
+    <section class="two-col">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Least predictable routes</h2>
+          <p>How much later than usual a trip runs on a bad day (1 in 10 trips).</p>
+        </div>
+        <table class="tbl" id="relTable"></table>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Bunching and service gaps</h2>
+          <p>At each route's middle stop, 07:00-21:00 weekdays: share of buses arriving within a
+            quarter of the scheduled gap (bunched), and gaps over twice the scheduled gap. Long gaps
+            can also mean buses missing from the GPS feed.</p>
+        </div>
+        <table class="tbl" id="bunchTable"></table>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/static/ops.js"></script>
+</body>
+</html>

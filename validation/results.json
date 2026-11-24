@@ -1,0 +1,751 @@
+{
+ "headline": {
+  "mae_model_min": 5.033,
+  "mae_timetable_min": 10.475,
+  "mape_model_pct": 10.96,
+  "mape_timetable_pct": 23.23,
+  "n_trips": 330803
+ },
+ "all_trips": {
+  "model": {
+   "n": 330803,
+   "mae_min": 5.033,
+   "mape_pct": 10.96,
+   "bias_min": -1.109
+  },
+  "timetable": {
+   "n": 330803,
+   "mae_min": 10.475,
+   "mape_pct": 23.23,
+   "bias_min": -2.633
+  }
+ },
+ "by_hour": [
+  {
+   "hour": 5,
+   "n": 9586,
+   "model_mae_min": 2.496,
+   "timetable_mae_min": 15.22,
+   "model_mape_pct": 7.5,
+   "timetable_mape_pct": 44.0,
+   "model_bias_min": -0.157
+  },
+  {
+   "hour": 6,
+   "n": 17822,
+   "model_mae_min": 2.903,
+   "timetable_mae_min": 11.711,
+   "model_mape_pct": 8.08,
+   "timetable_mape_pct": 33.3,
+   "model_bias_min": 0.137
+  },
+  {
+   "hour": 7,
+   "n": 24211,
+   "model_mae_min": 3.652,
+   "timetable_mae_min": 8.718,
+   "model_mape_pct": 9.25,
+   "timetable_mape_pct": 22.86,
+   "model_bias_min": 0.555
+  },
+  {
+   "hour": 8,
+   "n": 26341,
+   "model_mae_min": 3.993,
+   "timetable_mae_min": 7.449,
+   "model_mape_pct": 8.68,
+   "timetable_mape_pct": 16.81,
+   "model_bias_min": 0.082
+  },
+  {
+   "hour": 9,
+   "n": 23484,
+   "model_mae_min": 4.479,
+   "timetable_mae_min": 8.186,
+   "model_mape_pct": 9.23,
+   "timetable_mape_pct": 16.78,
+   "model_bias_min": -0.593
+  },
+  {
+   "hour": 10,
+   "n": 24163,
+   "model_mae_min": 4.866,
+   "timetable_mae_min": 8.43,
+   "model_mape_pct": 9.96,
+   "timetable_mape_pct": 17.28,
+   "model_bias_min": -0.768
+  },
+  {
+   "hour": 11,
+   "n": 22792,
+   "model_mae_min": 5.192,
+   "timetable_mae_min": 9.192,
+   "model_mape_pct": 11.05,
+   "timetable_mape_pct": 19.22,
+   "model_bias_min": -1.073
+  },
+  {
+   "hour": 12,
+   "n": 18049,
+   "model_mae_min": 5.247,
+   "timetable_mae_min": 9.424,
+   "model_mape_pct": 11.74,
+   "timetable_mape_pct": 20.66,
+   "model_bias_min": -1.304
+  },
+  {
+   "hour": 13,
+   "n": 14034,
+   "model_mae_min": 5.57,
+   "timetable_mae_min": 9.499,
+   "model_mape_pct": 12.5,
+   "timetable_mape_pct": 21.3,
+   "model_bias_min": -1.503
+  },
+  {
+   "hour": 14,
+   "n": 13768,
+   "model_mae_min": 6.024,
+   "timetable_mae_min": 10.251,
+   "model_mape_pct": 12.96,
+   "timetable_mape_pct": 21.67,
+   "model_bias_min": -2.072
+  },
+  {
+   "hour": 15,
+   "n": 15677,
+   "model_mae_min": 6.218,
+   "timetable_mae_min": 10.862,
+   "model_mape_pct": 12.29,
+   "timetable_mape_pct": 21.12,
+   "model_bias_min": -2.423
+  },
+  {
+   "hour": 16,
+   "n": 19204,
+   "model_mae_min": 6.739,
+   "timetable_mae_min": 12.475,
+   "model_mape_pct": 12.35,
+   "timetable_mape_pct": 22.29,
+   "model_bias_min": -2.768
+  },
+  {
+   "hour": 17,
+   "n": 19924,
+   "model_mae_min": 7.136,
+   "timetable_mae_min": 15.336,
+   "model_mape_pct": 12.83,
+   "timetable_mape_pct": 25.75,
+   "model_bias_min": -3.192
+  },
+  {
+   "hour": 18,
+   "n": 17108,
+   "model_mae_min": 7.052,
+   "timetable_mae_min": 15.997,
+   "model_mape_pct": 13.35,
+   "timetable_mape_pct": 28.4,
+   "model_bias_min": -2.021
+  },
+  {
+   "hour": 19,
+   "n": 18539,
+   "model_mae_min": 6.496,
+   "timetable_mae_min": 13.12,
+   "model_mape_pct": 13.33,
+   "timetable_mape_pct": 25.43,
+   "model_bias_min": -1.456
+  },
+  {
+   "hour": 20,
+   "n": 16664,
+   "model_mae_min": 5.275,
+   "timetable_mae_min": 9.185,
+   "model_mape_pct": 12.69,
+   "timetable_mape_pct": 21.69,
+   "model_bias_min": -0.986
+  },
+  {
+   "hour": 21,
+   "n": 13962,
+   "model_mae_min": 4.068,
+   "timetable_mae_min": 7.807,
+   "model_mape_pct": 11.24,
+   "timetable_mape_pct": 21.96,
+   "model_bias_min": -0.982
+  },
+  {
+   "hour": 22,
+   "n": 8675,
+   "model_mae_min": 3.134,
+   "timetable_mae_min": 8.475,
+   "model_mape_pct": 10.03,
+   "timetable_mape_pct": 26.93,
+   "model_bias_min": -0.6
+  }
+ ],
+ "by_date": [
+  {
+   "date": "2026-10-25",
+   "n": 49334,
+   "model": {
+    "n": 49334,
+    "mae_min": 5.061,
+    "mape_pct": 10.61,
+    "bias_min": -3.702
+   },
+   "timetable": {
+    "n": 49334,
+    "mae_min": 9.784,
+    "mape_pct": 23.15,
+    "bias_min": 0.694
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "n": 49269,
+   "model": {
+    "n": 49269,
+    "mae_min": 4.796,
+    "mape_pct": 11.25,
+    "bias_min": 1.611
+   },
+   "timetable": {
+    "n": 49269,
+    "mae_min": 9.885,
+    "mape_pct": 22.43,
+    "bias_min": -1.568
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "n": 48304,
+   "model": {
+    "n": 48304,
+    "mae_min": 4.494,
+    "mape_pct": 9.77,
+    "bias_min": -1.615
+   },
+   "timetable": {
+    "n": 48304,
+    "mae_min": 10.945,
+    "mape_pct": 23.68,
+    "bias_min": -4.021
+   }
+  },
+  {
+   "date": "2026-10-28",
+   "n": 48487,
+   "model": {
+    "n": 48487,
+    "mae_min": 4.501,
+    "mape_pct": 9.75,
+    "bias_min": -1.657
+   },
+   "timetable": {
+    "n": 48487,
+    "mae_min": 11.008,
+    "mape_pct": 23.67,
+    "bias_min": -4.226
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "n": 45698,
+   "model": {
+    "n": 45698,
+    "mae_min": 5.992,
+    "mape_pct": 13.6,
+    "bias_min": 3.425
+   },
+   "timetable": {
+    "n": 45698,
+    "mae_min": 9.252,
+    "mape_pct": 21.77,
+    "bias_min": -0.14
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "n": 42861,
+   "model": {
+    "n": 42861,
+    "mae_min": 4.608,
+    "mape_pct": 10.26,
+    "bias_min": -1.69
+   },
+   "timetable": {
+    "n": 42861,
+    "mae_min": 10.46,
+    "mape_pct": 23.0,
+    "bias_min": -4.481
+   }
+  },
+  {
+   "date": "2026-10-31",
+   "n": 46850,
+   "model": {
+    "n": 46850,
+    "mae_min": 5.814,
+    "mape_pct": 11.56,
+    "bias_min": -4.043
+   },
+   "timetable": {
+    "n": 46850,
+    "mae_min": 11.994,
+    "mape_pct": 24.86,
+    "bias_min": -4.919
+   }
+  }
+ ],
+ "od_pairs": [
+  {
+   "kind": "demo",
+   "pattern_idx": 1519,
+   "route": "964DOWN",
+   "route_id": "2852",
+   "from_stop": "ISBT Kashmere Gate (ORR)  / GGS IP University",
+   "to_stop": "Nehru Place",
+   "from_stop_id": "1072",
+   "to_stop_id": "2562",
+   "from_pos": 30,
+   "to_pos": 59,
+   "trips": 33,
+   "actual_mean_min": 64.16,
+   "timetable_mae_min": 10.831,
+   "model_mae_min": 5.906,
+   "timetable_mape_pct": 16.36,
+   "model_mape_pct": 8.68
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 263,
+   "route": "MC715DOWN",
+   "route_id": "1404",
+   "from_stop": "Jahangir Puri Outer Ring Road / Jahangir Puri Crossing",
+   "to_stop": "Rohini Depot 3",
+   "from_stop_id": "5077",
+   "to_stop_id": "7660",
+   "from_pos": 3,
+   "to_pos": 22,
+   "trips": 833,
+   "actual_mean_min": 26.77,
+   "timetable_mae_min": 6.163,
+   "model_mae_min": 3.057,
+   "timetable_mape_pct": 26.41,
+   "model_mape_pct": 11.0
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 266,
+   "route": "MC715UP",
+   "route_id": "1407",
+   "from_stop": "Mangol Pur School (Outer Ring Road)",
+   "to_stop": "Jag Jivan Ram Hospital",
+   "from_stop_id": "7711",
+   "to_stop_id": "1525",
+   "from_pos": 4,
+   "to_pos": 23,
+   "trips": 811,
+   "actual_mean_min": 22.95,
+   "timetable_mae_min": 6.932,
+   "model_mae_min": 2.225,
+   "timetable_mape_pct": 33.12,
+   "model_mape_pct": 9.53
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 1077,
+   "route": "78DOWN",
+   "route_id": "2250",
+   "from_stop": "Pandav Nagar",
+   "to_stop": "Prem Bari Pull",
+   "from_stop_id": "1437",
+   "to_stop_id": "30",
+   "from_pos": 4,
+   "to_pos": 25,
+   "trips": 764,
+   "actual_mean_min": 33.33,
+   "timetable_mae_min": 6.097,
+   "model_mae_min": 4.203,
+   "timetable_mape_pct": 17.87,
+   "model_mape_pct": 12.33
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 1078,
+   "route": "78UP",
+   "route_id": "2251",
+   "from_stop": "Prem Bari Pul",
+   "to_stop": "Pandav Nagar",
+   "from_stop_id": "741",
+   "to_stop_id": "1426",
+   "from_pos": 4,
+   "to_pos": 24,
+   "trips": 719,
+   "actual_mean_min": 34.83,
+   "timetable_mae_min": 7.519,
+   "model_mae_min": 4.978,
+   "timetable_mape_pct": 20.98,
+   "model_mape_pct": 12.66
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 1853,
+   "route": "D-004UP",
+   "route_id": "3238",
+   "from_stop": "SHOPING COMPLEX (NELSON MANDELA MARG) / Ambience Mall",
+   "to_stop": "JNU / JNU Xing",
+   "from_stop_id": "6499",
+   "to_stop_id": "6477",
+   "from_pos": 3,
+   "to_pos": 19,
+   "trips": 629,
+   "actual_mean_min": 18.62,
+   "timetable_mae_min": 3.345,
+   "model_mae_min": 1.612,
+   "timetable_mape_pct": 19.9,
+   "model_mape_pct": 8.43
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 888,
+   "route": "525STLDOWN",
+   "route_id": "2038",
+   "from_stop": "Saket Metro Station",
+   "to_stop": "Pul Pehladpur (Badarpur)",
+   "from_stop_id": "2734",
+   "to_stop_id": "2847",
+   "from_pos": 4,
+   "to_pos": 23,
+   "trips": 603,
+   "actual_mean_min": 33.38,
+   "timetable_mae_min": 6.277,
+   "model_mae_min": 3.341,
+   "timetable_mape_pct": 18.65,
+   "model_mape_pct": 9.67
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 2090,
+   "route": "546STL-GHD-IIDOWN",
+   "route_id": "3475",
+   "from_stop": "Hasanpur Village",
+   "to_stop": "Mohan Garden",
+   "from_stop_id": "8047",
+   "to_stop_id": "3546",
+   "from_pos": 5,
+   "to_pos": 32,
+   "trips": 581,
+   "actual_mean_min": 38.8,
+   "timetable_mae_min": 10.894,
+   "model_mae_min": 3.671,
+   "timetable_mape_pct": 31.26,
+   "model_mape_pct": 9.0
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 447,
+   "route": "159DOWN",
+   "route_id": "1615",
+   "from_stop": "Jahangirpuri ABlock",
+   "to_stop": "Naraina Depot",
+   "from_stop_id": "1080",
+   "to_stop_id": "1427",
+   "from_pos": 4,
+   "to_pos": 27,
+   "trips": 579,
+   "actual_mean_min": 46.42,
+   "timetable_mae_min": 10.899,
+   "model_mae_min": 5.613,
+   "timetable_mape_pct": 21.96,
+   "model_mape_pct": 11.42
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 450,
+   "route": "159UP",
+   "route_id": "1616",
+   "from_stop": "Naraina Depot",
+   "to_stop": "JAHANGIRPURI XING / Jahangirpuri C Block",
+   "from_stop_id": "1436",
+   "to_stop_id": "5408",
+   "from_pos": 4,
+   "to_pos": 25,
+   "trips": 575,
+   "actual_mean_min": 45.31,
+   "timetable_mae_min": 10.915,
+   "model_mae_min": 5.343,
+   "timetable_mape_pct": 22.72,
+   "model_mape_pct": 11.56
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 1403,
+   "route": "GL-23UP",
+   "route_id": "2694",
+   "from_stop": "Shyam Giri Mandir",
+   "to_stop": "Hasanpur Depot",
+   "from_stop_id": "894",
+   "to_stop_id": "1165",
+   "from_pos": 3,
+   "to_pos": 19,
+   "trips": 567,
+   "actual_mean_min": 25.87,
+   "timetable_mae_min": 4.955,
+   "model_mae_min": 2.433,
+   "timetable_mape_pct": 22.78,
+   "model_mape_pct": 9.26
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 1061,
+   "route": "761UP",
+   "route_id": "2228",
+   "from_stop": "Vijay Enclave (New Dwarka Road)",
+   "to_stop": "Kohat Enclave Metro Station",
+   "from_stop_id": "3771",
+   "to_stop_id": "26",
+   "from_pos": 8,
+   "to_pos": 45,
+   "trips": 552,
+   "actual_mean_min": 57.55,
+   "timetable_mae_min": 10.951,
+   "model_mae_min": 6.117,
+   "timetable_mape_pct": 19.85,
+   "model_mape_pct": 10.27
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 1073,
+   "route": "778DOWN",
+   "route_id": "2245",
+   "from_stop": "Mahaveer Enclave Part II  and  III",
+   "to_stop": "Swatantra Bharat Mills",
+   "from_stop_id": "3770",
+   "to_stop_id": "4021",
+   "from_pos": 5,
+   "to_pos": 31,
+   "trips": 552,
+   "actual_mean_min": 44.66,
+   "timetable_mae_min": 8.646,
+   "model_mae_min": 4.875,
+   "timetable_mape_pct": 18.79,
+   "model_mape_pct": 11.04
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 1832,
+   "route": "D-0501UP",
+   "route_id": "3202",
+   "from_stop": "Shyam Giri Mandir",
+   "to_stop": "Nand Nagari Depot",
+   "from_stop_id": "894",
+   "to_stop_id": "1483",
+   "from_pos": 3,
+   "to_pos": 21,
+   "trips": 550,
+   "actual_mean_min": 31.21,
+   "timetable_mae_min": 5.187,
+   "model_mae_min": 2.875,
+   "timetable_mape_pct": 16.21,
+   "model_mape_pct": 8.69
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 608,
+   "route": "258DOWN",
+   "route_id": "1769",
+   "from_stop": "Check Post / MCD Toll Tax",
+   "to_stop": "Ludlow Castle School",
+   "from_stop_id": "2030",
+   "to_stop_id": "266",
+   "from_pos": 4,
+   "to_pos": 26,
+   "trips": 532,
+   "actual_mean_min": 31.11,
+   "timetable_mae_min": 3.689,
+   "model_mae_min": 2.634,
+   "timetable_mape_pct": 11.93,
+   "model_mape_pct": 8.11
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 1060,
+   "route": "761DOWN",
+   "route_id": "2227",
+   "from_stop": "Kohat Enclave Metro Station",
+   "to_stop": "Vijay Enclave (New Dwarka Road)",
+   "from_stop_id": "72",
+   "to_stop_id": "3787",
+   "from_pos": 8,
+   "to_pos": 45,
+   "trips": 504,
+   "actual_mean_min": 54.35,
+   "timetable_mae_min": 9.748,
+   "model_mae_min": 4.957,
+   "timetable_mape_pct": 20.08,
+   "model_mape_pct": 9.09
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 889,
+   "route": "525STLUP",
+   "route_id": "2039",
+   "from_stop": "Surajkund Crossing",
+   "to_stop": "Lado Sarai",
+   "from_stop_id": "2820",
+   "to_stop_id": "2807",
+   "from_pos": 4,
+   "to_pos": 24,
+   "trips": 499,
+   "actual_mean_min": 34.98,
+   "timetable_mae_min": 6.167,
+   "model_mae_min": 3.867,
+   "timetable_mape_pct": 17.7,
+   "model_mape_pct": 10.51
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 2091,
+   "route": "546STL-GHD-IIUP",
+   "route_id": "3476",
+   "from_stop": "Mohan Garden",
+   "to_stop": "Devta Wala Mandir",
+   "from_stop_id": "8177",
+   "to_stop_id": "3389",
+   "from_pos": 5,
+   "to_pos": 30,
+   "trips": 450,
+   "actual_mean_min": 43.28,
+   "timetable_mae_min": 9.006,
+   "model_mae_min": 4.693,
+   "timetable_mape_pct": 23.64,
+   "model_mape_pct": 10.38
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 629,
+   "route": "307UP",
+   "route_id": "1796",
+   "from_stop": "Zakir Husain College",
+   "to_stop": "Kotla Village",
+   "from_stop_id": "1564",
+   "to_stop_id": "837",
+   "from_pos": 3,
+   "to_pos": 21,
+   "trips": 449,
+   "actual_mean_min": 31.45,
+   "timetable_mae_min": 6.68,
+   "model_mae_min": 3.87,
+   "timetable_mape_pct": 19.86,
+   "model_mape_pct": 10.84
+  },
+  {
+   "kind": "rule",
+   "pattern_idx": 1402,
+   "route": "GL-23DOWN",
+   "route_id": "2693",
+   "from_stop": "EDM Mall / Gazipur Depot",
+   "to_stop": "Shyam Giri Mandir",
+   "from_stop_id": "913",
+   "to_stop_id": "933",
+   "from_pos": 3,
+   "to_pos": 21,
+   "trips": 447,
+   "actual_mean_min": 33.68,
+   "timetable_mae_min": 5.666,
+   "model_mae_min": 3.142,
+   "timetable_mape_pct": 16.43,
+   "model_mape_pct": 9.13
+  }
+ ],
+ "live_check": {
+  "replay_date": "2026-10-27",
+  "n_trips": 48304,
+  "typical_mae_min": 4.494,
+  "live_mae_min": 4.18,
+  "first": {
+   "prior_k": 2.0,
+   "horizon_s": 1800.0,
+   "live_mae_min": 4.18
+  },
+  "rule_fired": false
+ },
+ "success": {
+  "S1_mae_reduction": 0.5195,
+  "S1_pass": true,
+  "S2_pass": true
+ },
+ "r3_bias_rule_triggered": false,
+ "reliability_p90_coverage": 0.8539,
+ "calibration_k": 1.0131,
+ "level_share": {
+  "L1": 0.3061,
+  "L2": 0.1475,
+  "L3": 0.421,
+  "L4": 0.0725,
+  "L5": 0.0528
+ },
+ "train_dates": [
+  "2026-10-01",
+  "2026-10-02",
+  "2026-10-03",
+  "2026-10-04",
+  "2026-10-05",
+  "2026-10-06",
+  "2026-10-07",
+  "2026-10-08",
+  "2026-10-09",
+  "2026-10-10",
+  "2026-10-11",
+  "2026-10-12",
+  "2026-10-13",
+  "2026-10-14",
+  "2026-10-15",
+  "2026-10-16",
+  "2026-10-17",
+  "2026-10-18",
+  "2026-10-19",
+  "2026-10-20",
+  "2026-10-21",
+  "2026-10-22",
+  "2026-10-23",
+  "2026-10-24"
+ ],
+ "test_dates": [
+  "2026-10-25",
+  "2026-10-26",
+  "2026-10-27",
+  "2026-10-28",
+  "2026-10-29",
+  "2026-10-30",
+  "2026-10-31"
+ ],
+ "constants": {
+  "WINSOR_LO": 0.1,
+  "WINSOR_HI": 0.9,
+  "N_MIN_L1": 8,
+  "N_MIN_L2": 8,
+  "N_MIN_L3": 5,
+  "N_MIN_L4": 30,
+  "PROFILE_MIN_SEGS": 50,
+  "PROFILE_SEG_MIN_N3": 50,
+  "PROFILE_F_MIN": 0.6,
+  "PROFILE_F_MAX": 2.5,
+  "RATIO_G_MIN": 0.5,
+  "RATIO_G_MAX": 3.0,
+  "CALIB_MIN": 0.85,
+  "CALIB_MAX": 1.2,
+  "CALIB_MAX_RUNS": 200000,
+  "CALIB_MIN_SEGS": 10,
+  "SPEED_MIN_KMH": 3,
+  "SPEED_MAX_KMH": 60,
+  "LIVE_HORIZON_S": 1800,
+  "LIVE_TICK_S": 300,
+  "LIVE_WINDOW_S": 2700,
+  "LIVE_DECAY_S": 900,
+  "CITY_PRIOR_K": 50,
+  "LIVE_PRIOR_K": 2.0
+ }
+}

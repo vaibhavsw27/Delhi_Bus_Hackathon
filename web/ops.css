@@ -1,0 +1,309 @@
+/*
+  web/ops.css - styling of the BusPulse operator dashboard.
+  Inputs: none. Outputs: styles for ops.html and the elements ops.js creates.
+*/
+
+:root {
+  --text: #111827;
+  --text-2: #6B7280;
+  --page: #F6F7F9;
+  --surface: #FFFFFF;
+  --border: #E5E7EB;
+  --accent: #2563EB;
+  --bad: #DC2626;
+  --good: #16A34A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--page);
+  font-variant-numeric: tabular-nums;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 28px;
+  background: #111827;
+  color: #FFFFFF;
+}
+
+.top h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.for {
+  font-weight: 500;
+  color: #93C5FD;
+}
+
+.sub {
+  margin: 2px 0 0 0;
+  font-size: 13px;
+  color: #9CA3AF;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.back {
+  color: #FFFFFF;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #374151;
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 28px 48px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.kpi {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+
+.kpi-value {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.kpi-label {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-top: 2px;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.panel-head h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.panel-head p {
+  margin: 4px 0 14px 0;
+  color: var(--text-2);
+  font-size: 13px;
+  max-width: 860px;
+}
+
+.chart {
+  width: 100%;
+}
+
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.map-row {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 16px;
+}
+
+.ops-map {
+  height: 460px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.ops-map .leaflet-tile-pane {
+  filter: grayscale(0.85) brightness(1.05) contrast(0.9);
+}
+
+.hour-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  color: var(--text-2);
+}
+
+.hour-row input {
+  flex: 1;
+}
+
+.hour-row b {
+  color: var(--text);
+  font-size: 16px;
+  min-width: 52px;
+}
+
+.list-col {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.tbl th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+  font-weight: 600;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+}
+
+.tbl td {
+  padding: 7px 8px;
+  border-bottom: 1px solid #F3F4F6;
+  vertical-align: top;
+}
+
+.tbl tr.click {
+  cursor: pointer;
+}
+
+.tbl tr.click:hover,
+.tbl tr.active {
+  background: #EFF6FF;
+}
+
+.num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.bad {
+  color: var(--bad);
+  font-weight: 600;
+}
+
+.good {
+  color: var(--good);
+  font-weight: 600;
+}
+
+.route-chip {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.muted {
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.audit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.audit-list {
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.audit-detail h3 {
+  margin: 0 0 4px 0;
+  font-size: 15px;
+}
+
+.download {
+  margin-top: 10px;
+  border: 1px solid var(--accent);
+  background: var(--surface);
+  color: var(--accent);
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.chip-grey {
+  background: #374151;
+  color: #E5E7EB;
+}
+
+.chip-live {
+  background: #14532D;
+  color: #BBF7D0;
+}
+
+@media (max-width: 900px) {
+  .map-row,
+  .audit-row,
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .page {
+    padding: 16px;
+  }
+}

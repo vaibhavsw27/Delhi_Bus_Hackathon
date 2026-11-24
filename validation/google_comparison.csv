@@ -1,0 +1,11 @@
+pair,from_stop,to_stop,maps_url,depart,our_total_min,our_in_bus_min,our_routes,google_total_min,google_in_bus_min,google_routes
+1,ISBT Kashmere Gate (ORR)  / GGS IP University,Nehru Place,"https://www.google.com/maps/dir/?api=1&origin=28.669215,77.232139&destination=28.547323,77.253897&travelmode=transit",Tue 08:30,63.9,48.6,188DOWN > 425UP,,,
+2,Jahangir Puri Outer Ring Road / Jahangir Puri Crossing,Rohini Depot 3,"https://www.google.com/maps/dir/?api=1&origin=28.733999,77.177171&destination=28.695124,77.108858&travelmode=transit",Tue 08:30,24.6,22.3,MC715DOWN,,,
+3,Mangol Pur School (Outer Ring Road),Jag Jivan Ram Hospital,"https://www.google.com/maps/dir/?api=1&origin=28.69456,77.10592&destination=28.735681,77.173717&travelmode=transit",Tue 08:30,23.2,20.4,MC715UP,,,
+4,Pandav Nagar,Prem Bari Pull,"https://www.google.com/maps/dir/?api=1&origin=28.650133,77.15335&destination=28.700236,77.158508&travelmode=transit",Tue 08:30,25.0,22.5,159UP,,,
+5,Prem Bari Pul,Pandav Nagar,"https://www.google.com/maps/dir/?api=1&origin=28.700094,77.158528&destination=28.650014,77.153507&travelmode=transit",Tue 08:30,27.0,24.2,159DOWN,,,
+6,SHOPING COMPLEX (NELSON MANDELA MARG) / Ambience Mall,JNU / JNU Xing,"https://www.google.com/maps/dir/?api=1&origin=28.542237,77.158098&destination=28.550587,77.181335&travelmode=transit",Tue 08:30,21.6,18.3,D-004UP,,,
+7,Saket Metro Station,Pul Pehladpur (Badarpur),"https://www.google.com/maps/dir/?api=1&origin=28.520624,77.202379&destination=28.499993,77.294548&travelmode=transit",Tue 08:30,34.1,31.8,525STLDOWN,,,
+8,Hasanpur Village,Mohan Garden,"https://www.google.com/maps/dir/?api=1&origin=28.556822,76.936855&destination=28.620357,77.040769&travelmode=transit",Tue 08:30,46.0,44.5,546STL-GHD-IIDOWN,,,
+9,Jahangirpuri ABlock,Naraina Depot,"https://www.google.com/maps/dir/?api=1&origin=28.7286,77.1648&destination=28.648715,77.151141&travelmode=transit",Tue 08:30,48.3,45.6,159DOWN,,,
+10,Naraina Depot,JAHANGIRPURI XING / Jahangirpuri C Block,"https://www.google.com/maps/dir/?api=1&origin=28.64905,77.1513&destination=28.727205,77.162514&travelmode=transit",Tue 08:30,44.2,41.7,159UP,,,

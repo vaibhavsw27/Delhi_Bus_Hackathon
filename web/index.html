@@ -1,0 +1,209 @@
+<!doctype html>
+<!--
+  web/index.html - page structure of the BusPulse Delhi rider app.
+  Inputs: /static/style.css, /static/app.js, Leaflet 1.9.4, Inter font, /manifest.webmanifest.
+  Outputs: the single page: panel (header, form, mode switch, slider, results) and map.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2563EB">
+  <title>BusPulse Delhi</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/static/icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BusPulse">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- Opening: a short splash with the logo, then a home screen of choices. -->
+  <div id="splash" class="splash" aria-hidden="true">
+    <div class="splash-inner">
+      <img class="splash-logo" src="/static/icon.svg" alt="">
+      <div class="splash-name">BusPulse <span>Delhi</span></div>
+      <div class="splash-tag" data-i18n="splashTag">Bus times from real GPS</div>
+      <div class="splash-bar"><div></div></div>
+    </div>
+  </div>
+
+  <div id="home" class="home hidden">
+    <div id="homeMap" class="home-map" aria-hidden="true"></div>
+    <div class="home-veil"></div>
+    <div class="home-inner">
+      <div class="home-top">
+        <div class="home-brand">
+          <img src="/static/icon.svg" alt="">
+          <span>BusPulse Delhi</span>
+        </div>
+        <div class="lang-switch">
+          <button type="button" id="homeLangEn" class="lang active">EN</button>
+          <button type="button" id="homeLangHi" class="lang">हिं</button>
+        </div>
+      </div>
+      <h2 id="homeGreeting" class="home-greeting">Good morning</h2>
+      <div class="home-tiles">
+        <button type="button" id="homeLive" class="tile tile-live">
+          <span class="tile-icon"><span class="live-dot-big"></span></span>
+          <span class="tile-title" data-i18n="tileLive">Live buses</span>
+          <span id="homeLiveSub" class="tile-sub" data-i18n="tileLiveSub">Real buses on the map right now</span>
+        </button>
+        <button type="button" id="homePlan" class="tile tile-plan">
+          <span class="tile-icon tile-plan-icon"></span>
+          <span class="tile-title" data-i18n="tilePlan">Plan a trip</span>
+          <span class="tile-sub" data-i18n="tilePlanSub">Any two places, today or any day ahead</span>
+        </button>
+        <button type="button" id="homeTraffic" class="tile">
+          <span class="tile-icon tile-traffic"></span>
+          <span class="tile-title" data-i18n="tileTraffic">City traffic</span>
+          <span class="tile-sub" data-i18n="tileTrafficSub">How fast buses move on every road, by time of day</span>
+        </button>
+        <a href="/ops" id="homeOps" class="tile">
+          <span class="tile-icon tile-ops"></span>
+          <span class="tile-title" data-i18n="tileOps">For operators</span>
+          <span class="tile-sub" data-i18n="tileOpsSub">Chokepoints and timetable audit</span>
+        </a>
+      </div>
+      <div id="homeQuick" class="home-quick hidden"></div>
+      <p id="homeProof" class="home-proof"></p>
+      <p class="home-credit" data-i18n="mapCredit">Map © OpenStreetMap contributors</p>
+    </div>
+  </div>
+
+  <aside id="panel">
+    <div id="progress" class="progress hidden"><div class="progress-bar"></div></div>
+
+    <header class="panel-header">
+      <div class="header-row">
+        <h1><button type="button" id="homeButton" class="brand-button" title="Home"><img src="/static/icon.svg" alt="">BusPulse Delhi</button></h1>
+        <div class="header-actions">
+          <div class="lang-switch">
+            <button type="button" id="langEn" class="lang active">EN</button>
+            <button type="button" id="langHi" class="lang">हिं</button>
+          </div>
+        </div>
+      </div>
+      <p class="subtitle" data-i18n="subtitle">Bus times learned from real GPS, not the timetable</p>
+    </header>
+
+    <div id="tripSummary" class="trip-summary hidden">
+      <div class="trip-summary-text">
+        <div id="summaryRoute" class="summary-route"></div>
+        <div id="summaryWhen" class="summary-when"></div>
+      </div>
+      <button type="button" id="editTrip" class="edit-button" data-i18n="edit">Edit</button>
+    </div>
+
+    <form id="planForm" class="form" autocomplete="off" novalidate>
+      <div id="savedRow" class="saved-row hidden"></div>
+      <div class="field">
+        <div class="label-row">
+          <label class="label" for="fromInput" data-i18n="from">From</label>
+          <span class="label-actions">
+            <button type="button" id="fromSave" class="link-button hidden" data-i18n="save">☆ Save</button>
+            <button type="button" id="locateButton" class="link-button" data-i18n="myLocation">My location</button>
+          </span>
+        </div>
+        <div class="input-row">
+          <span class="dot dot-from"></span>
+          <div class="input-wrap">
+            <input id="fromInput" class="text-input" type="text" data-i18n-placeholder="placeholder" placeholder="Stop name or tap the map">
+            <ul id="fromList" class="suggestions hidden"></ul>
+          </div>
+          <button type="button" id="fromPin" class="pin-button" title="Pick on the map">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="field">
+        <div class="label-row">
+          <label class="label" for="toInput" data-i18n="to">To</label>
+          <span class="label-actions">
+            <button type="button" id="toSave" class="link-button hidden" data-i18n="save">☆ Save</button>
+          </span>
+        </div>
+        <div class="input-row">
+          <span class="dot dot-to"></span>
+          <div class="input-wrap">
+            <input id="toInput" class="text-input" type="text" data-i18n-placeholder="placeholder" placeholder="Stop name or tap the map">
+            <ul id="toList" class="suggestions hidden"></ul>
+          </div>
+          <button type="button" id="toPin" class="pin-button" title="Pick on the map">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+      <div id="savePopover" class="save-popover hidden">
+        <span data-i18n="saveAs">Save as</span>
+        <button type="button" id="saveHome" class="save-choice">🏠 <span data-i18n="placeHome">Home</span></button>
+        <button type="button" id="saveWork" class="save-choice">💼 <span data-i18n="placeWork">Work</span></button>
+      </div>
+      <div class="field-row">
+        <div class="field grow">
+          <label class="label" for="dateInput" data-i18n="date">Date</label>
+          <div class="date-row">
+            <input id="dateInput" class="text-input" type="date">
+            <span id="dayChip" class="chip chip-neutral"></span>
+          </div>
+        </div>
+        <div class="field time-field">
+          <div class="mini-switch">
+            <button type="button" id="timeLeave" class="mini active" data-i18n="leaveAt">Leave at</button>
+            <button type="button" id="timeArrive" class="mini" data-i18n="arriveBy">Arrive by</button>
+          </div>
+          <input id="timeInput" class="text-input" type="time" step="60">
+        </div>
+      </div>
+      <button type="submit" id="planButton" class="plan-button" disabled data-i18n="plan">Find buses</button>
+    </form>
+
+    <div class="mode-section">
+      <div class="segmented" role="tablist">
+        <button type="button" id="modeTypical" class="segment active" data-i18n="typical">Usual day</button>
+        <button type="button" id="modeLive" class="segment"><span class="live-pip"></span><span data-i18n="live">Live</span></button>
+      </div>
+      <div id="liveBadge" class="live-badge hidden">
+        <span class="live-dot"></span>
+        <span id="liveBadgeText"></span>
+      </div>
+    </div>
+
+    <div class="slider-section">
+      <div class="slider-head">
+        <span id="sliderLabel" class="label">Departure time</span>
+        <span id="sliderValue" class="slider-value">08:30</span>
+      </div>
+      <input id="timeSlider" class="slider" type="range" min="300" max="1410" step="30" value="510">
+      <div class="ticks">
+        <span>06</span><span>09</span><span>12</span><span>15</span><span>18</span><span>21</span>
+      </div>
+    </div>
+
+    <section id="results" class="results"></section>
+  </aside>
+
+  <main id="mapWrap">
+    <div id="map"></div>
+    <div id="toast" class="toast hidden"></div>
+    <button type="button" id="trafficButton" class="map-button" data-i18n="traffic">Traffic</button>
+    <div class="legend">
+      <div class="legend-row"><span class="swatch" style="background:#D7263D"></span>&lt; 8</div>
+      <div class="legend-row"><span class="swatch" style="background:#F26B38"></span>8-12</div>
+      <div class="legend-row"><span class="swatch" style="background:#F5A623"></span>12-18</div>
+      <div class="legend-row"><span class="swatch" style="background:#9BC53D"></span>18-25</div>
+      <div class="legend-row"><span class="swatch" style="background:#22A559"></span>25+ km/h</div>
+      <div class="legend-row"><span class="swatch-walk"></span><span data-i18n="legendWalk">walk</span></div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
